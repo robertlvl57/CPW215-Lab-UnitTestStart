@@ -11,7 +11,28 @@ namespace BusinessLogic
         /// <returns></returns>
         public static bool IsSsn(string ssn)
         {
-            throw new NotImplementedException();
+            if (ssn.Length >= 9)
+            {
+                if (ssn.Substring(3, 1) == "-" && ssn.Substring(6, 1) == "-")
+                {
+                    ssn = ssn.Replace("-", "");
+                    if (ssn.Length != 9)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+            if (ssn.Contains("-"))
+            {
+                return false;
+            }
+            if (ssn.Length != 9)
+            {
+                return false;
+            }
+            return true;
+                
         }
 
         /// <summary>
