@@ -40,7 +40,9 @@ namespace BusinessLogicTests
         public void IsWithinRange_NumInInclusiveRange_ReturnTrue(int test, int min, int max)
         {
             //TODO: Test the IsWithinRange method in the Validator class
-            Assert.Fail();
+            bool result = Validator.IsWithinRange(test, min, max);
+
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
@@ -50,7 +52,9 @@ namespace BusinessLogicTests
         public void IsWithinRange_NumOutsideInclusiveRange_ReturnsFalse(int test, int min, int max)
         {
             //TODO: Test the IsWithinRange method in the Validator class
-            Assert.Fail();
+            bool result = Validator.IsWithinRange(test, min, max);
+
+            Assert.IsFalse(result);
         }
     }
 }
