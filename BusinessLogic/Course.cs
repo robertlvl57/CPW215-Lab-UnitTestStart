@@ -7,6 +7,7 @@ namespace BusinessLogic
     public class Course
     {
         private byte numberOfCredits;
+        private string courseName;
 
         public Course(string courseName)
         {
@@ -22,24 +23,37 @@ namespace BusinessLogic
         /// <summary>
         /// The name of the course
         /// </summary>
-        public string CourseName { get; set; }
+        public string CourseName
+        {
+            get => courseName;
+            set => ValidateCourseName(value);
+        }
+
+        private void ValidateCourseName(string course)
+        {
+            if (course == null)
+            {
+                throw new ArgumentNullException();
+            }
+            courseName = course;
+        }
 
         /// <summary>
         /// Number of credits for the course
         /// </summary>
-        public byte NumberOfCredits 
-        { 
-            get { return numberOfCredits; } 
-            set { ValidateNumCredits(value, numberOfCredits); }
+        public byte NumberOfCredits
+        {
+            get => numberOfCredits;
+            set => ValidateNumCredits(value);
         }
 
-        private void ValidateNumCredits(byte c, byte credits)
+        private void ValidateNumCredits(byte c)
         {
-            if(c < 0 || c > 30)
+            if (c <= 0 || c >= 30)
             {
-                throw new ArgumentException("Credits should be between 0 and 30");
+                throw new ArgumentException("Credits should be less than 30");
             }
-            credits = c;
+            numberOfCredits = c;
         }
 
     }
